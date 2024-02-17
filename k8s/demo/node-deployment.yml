@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-deployment
+  labels:
+    app: web-app
+spec:
+  template:
+    metadata:
+      name: node-pod
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - name: node-demo-pod
+          image: sureshchouksey/my-docker-node-demo:v1
+  replicas: 10
+  selector:
+    matchLabels:
+      app: web-app
